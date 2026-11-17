@@ -65,7 +65,7 @@ const categories = [
   },
   {
     id: "03",
-    title: "کمیسیون معاملات",
+    title: "فاز سوم",
     subtitle: "PROCUREMENT COMMISSION",
     description: "بررسی، تصمیم‌گیری و تصویب معاملات",
     accent: "#172B4D",
@@ -120,6 +120,21 @@ const processSeeds: Omit<Process, "id" | "category" | "svgPath">[] = [
       "ارزیابی مالی و حقوقی",
       "محاسبه امتیاز نهایی",
       "تصویب سطح صلاحیت",
+    ],
+  },
+  // ✅ مرحله‌ی جدید فاز اول
+  {
+    title: "تمیز کردن BP ها",
+    description: "پاکسازی و یکپارچه‌سازی اطلاعات پایه شرکای تجاری",
+    steps: 6,
+    owner: "امور تأمین‌کنندگان",
+    flow: [
+      "استخراج فهرست BP ها",
+      "شناسایی رکوردهای تکراری",
+      "کنترل صحت اطلاعات هویتی",
+      "ادغام یا حذف رکوردهای نامعتبر",
+      "اصلاح اطلاعات ناقص",
+      "تأیید نهایی و ثبت تغییرات",
     ],
   },
   {
@@ -332,10 +347,10 @@ const processSeeds: Omit<Process, "id" | "category" | "svgPath">[] = [
     ],
   },
   {
-    title: "مدیریت قراردادها",
-    description: "تنظیم، تصویب و پایش تعهدات قراردادی",
+    title: "نظرسنجی",
+    description: "مراحل ثبت نظر تامین کنندگان",
     steps: 12,
-    owner: "امور قراردادها",
+    owner: "",
     flow: [
       "دریافت مصوبه معامله",
       "تدوین پیش‌نویس قرارداد",
@@ -346,48 +361,6 @@ const processSeeds: Omit<Process, "id" | "category" | "svgPath">[] = [
       "پایش تعهدات",
     ],
   },
-  {
-    title: "تحویل کالا و خدمات",
-    description: "هماهنگی دریافت، کنترل و ثبت تحویل قطعی",
-    steps: 9,
-    owner: "انبار و واحد بهره‌بردار",
-    flow: [
-      "اعلام آمادگی تحویل",
-      "هماهنگی زمان دریافت",
-      "کنترل اسناد حمل",
-      "بازرسی کمی و ظاهری",
-      "کنترل فنی یا کیفی",
-      "ثبت رسید تحویل",
-    ],
-  },
-  {
-    title: "بررسی و تأیید اسناد",
-    description: "کنترل انطباق اسناد مالی، فنی و تحویل",
-    steps: 8,
-    owner: "امور مالی",
-    flow: [
-      "دریافت بسته اسناد",
-      "کنترل صورت‌حساب",
-      "تطبیق سفارش و رسید",
-      "بررسی کسورات و تضامین",
-      "رفع مغایرت احتمالی",
-      "تأیید نهایی اسناد",
-    ],
-  },
-  {
-    title: "ارزیابی عملکرد تأمین‌کنندگان",
-    description: "سنجش دوره‌ای کیفیت، تعهد و سطح خدمت",
-    steps: 10,
-    owner: "مدیریت زنجیره تأمین",
-    flow: [
-      "تعریف دوره ارزیابی",
-      "گردآوری شاخص‌های عملکرد",
-      "سنجش کیفیت تحویل",
-      "سنجش زمان و پاسخ‌گویی",
-      "محاسبه امتیاز عملکرد",
-      "تصویب برنامه بهبود",
-    ],
-  },
 ];
 
 // نام فایل SVG هر فرآیند داخل public/flows
@@ -395,21 +368,22 @@ const processSeeds: Omit<Process, "id" | "category" | "svgPath">[] = [
 const flowFiles: Record<number, string> = {
   1: "login.svg", // ورود تامین کننده
   2: "register.svg", // ثبت‌نام و تشکیل پرونده تأمین‌کننده
-  3: "flow-03.svg", // ارزیابی و تأیید صلاحیت تأمین‌کنندگان
-  4: "procurement.svg", // درخواست خرید
-  5: "admin.svg", // بررسی و تأیید درخواست خرید
-  6: "COMISSION.svg", // فرآیند بازرگانی و خرید
-  7: "COMMERCIAL.svg", // استعلام قیمت
-  8: "Aiagent.svg", // دریافت و بررسی پیشنهادهای تأمین‌کنندگان
-  9: "flow-09.svg", // تشکیل کمیسیون معاملات
-  10: "flow-10.svg", // کارتابل مدیر بازرگانی
-  11: "flow-11.svg", // کارتابل اعضای کمیسیون
-  12: "flow-12.svg", // بررسی، رأی‌گیری و تصویب معاملات
-  13: "ticket.svg", // صدور سفارش خرید
-  14: "flow-14.svg", // مدیریت قراردادها
-  15: "flow-15.svg", // تحویل کالا و خدمات
-  16: "flow-16.svg", // بررسی و تأیید اسناد
-  17: "flow-17.svg", // ارزیابی عملکرد تأمین‌کنندگان
+  3: "page.svg", // ارزیابی و تأیید صلاحیت تأمین‌کنندگان
+  4: "bp.svg", // ✅ تمیز کردن BP ها (جدید)
+  5: "procurement.svg", // درخواست خرید
+  6: "admin.svg", // بررسی و تأیید درخواست خرید
+  7: "COMISSION.svg", // فرآیند بازرگانی و خرید
+  8: "COMMERCIAL.svg", // استعلام قیمت
+  9: "Aiagent.svg", // دریافت و بررسی پیشنهادهای تأمین‌کنندگان
+  10: "flow-09.svg", // تشکیل کمیسیون معاملات
+  11: "flow-10.svg", // کارتابل مدیر بازرگانی
+  12: "flow-11.svg", // کارتابل اعضای کمیسیون
+  13: "flow-12.svg", // بررسی، رأی‌گیری و تصویب معاملات
+  14: "ticket.svg", // صدور سفارش خرید
+  15: "flow-14.svg", // مدیریت قراردادها
+  16: "flow-15.svg", // تحویل کالا و خدمات
+  17: "flow-16.svg", // بررسی و تأیید اسناد
+  18: "flow-17.svg", // ارزیابی عملکرد تأمین‌کنندگان
 };
 
 const processes: Process[] = processSeeds.map((process, index) => {
@@ -418,11 +392,30 @@ const processes: Process[] = processSeeds.map((process, index) => {
   return {
     ...process,
     id,
+    // ✅ فاز اول: ۴ آیتم اول | فاز دوم: ۵ آیتم بعدی | کمیسیون: ۴ آیتم | فاز چهارم: بقیه
     category:
-      categories[index < 3 ? 0 : index < 8 ? 1 : index < 12 ? 2 : 3].title,
+      categories[index < 4 ? 0 : index < 9 ? 1 : index < 13 ? 2 : 3].title,
     svgPath: `/flows/${encodeURIComponent(flowFiles[id] ?? `process-${id}.svg`)}`,
   };
 });
+
+// فرآیندهای فاز سوم در داده‌ها حفظ شده‌اند، اما فعلاً کارت‌هایشان نمایش داده نمی‌شود.
+// به‌جای آن‌ها فقط یک کارت «گزارشات» در فاز سوم نمایش داده می‌شود.
+const reportsProcess: Process = {
+  id: 19,
+  title: "گزارشات",
+  description: "دسترسی یکپارچه به گزارش‌های فرآیندهای تأمین و خرید",
+  steps: 1,
+  category: categories[2].title,
+  flow: ["مشاهده گزارشات"],
+  owner: "مدیریت سیستم",
+  svgPath: `/flows/${encodeURIComponent("page.svg")}`,
+};
+
+const visibleProcesses: Process[] = [
+  ...processes.filter((process) => process.id < 10 || process.id > 13),
+  reportsProcess,
+];
 
 const NODE_WIDTH = 190;
 const NODE_HEIGHT = 110;
@@ -538,7 +531,7 @@ function generateNodes(process: Process): FlowNode[] {
         title: "بررسی اعضای کمیسیون",
         start: 35,
         end: 46,
-        department: "کمیسیون معاملات",
+        department: "کمیسیون معاملاتt",
         owner: "اعضای کمیسیون",
         centerX: 450,
         centerY: 500,
@@ -837,41 +830,13 @@ const kindMeta: Record<NodeKind, { label: string; className: string }> = {
 
 function Brand() {
   return (
-    <div
-      className="brand"
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        direction: "ltr",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        gap: 14,
-        width: "auto",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          direction: "rtl",
-          textAlign: "right",
-        }}
-      >
+    <div className="brand">
+      <div className="brand-text">
         <strong>گروه زر</strong>
         <small>معماری فرآیندهای تأمین</small>
       </div>
 
-      <img
-        src="/logo.svg"
-        alt="لوگوی گروه زر"
-        style={{
-          width: 90,
-          height: 90,
-          objectFit: "contain",
-          flexShrink: 0,
-          display: "block",
-        }}
-      />
+      <img className="brand-logo" src="/logo.svg" alt="لوگوی گروه زر" />
     </div>
   );
 }
@@ -913,12 +878,6 @@ function ProcessCard({
       onClick={onOpen}
       style={{ "--category-accent": accent } as CSSProperties}
     >
-      <div className="card-top">
-        <span className="card-number">
-          {toPersianNumber(String(process.id).padStart(2, "0"))}
-        </span>
-      </div>
-
       <div className="card-copy">
         <h3>{process.title}</h3>
         <p>{process.description}</p>
@@ -949,8 +908,11 @@ function ProcessCarousel({
     const card = rail.querySelector<HTMLElement>(".process-card");
     const distance = card ? card.offsetWidth + 16 : 320;
 
+    // در چیدمان راست‌به‌چپ، «بعدی» یعنی اسکرول به سمت منفی
+    const sign = getComputedStyle(rail).direction === "rtl" ? -1 : 1;
+
     rail.scrollBy({
-      left: direction === "next" ? distance : -distance,
+      left: (direction === "next" ? distance : -distance) * sign,
       behavior: "smooth",
     });
   };
@@ -964,7 +926,7 @@ function ProcessCarousel({
         aria-label="نمایش کارت‌های قبلی"
         title="قبلی"
       >
-        ‹
+        <span aria-hidden="true">›</span>
       </button>
 
       <div className="process-grid" ref={railRef}>
@@ -984,7 +946,7 @@ function ProcessCarousel({
         aria-label="نمایش کارت‌های بعدی"
         title="بعدی"
       >
-        ›
+        <span aria-hidden="true">‹</span>
       </button>
     </div>
   );
@@ -994,12 +956,12 @@ function Home({ onOpen }: { onOpen: (process: Process) => void }) {
   const [query, setQuery] = useState("");
 
   const filtered = query
-    ? processes.filter((process) =>
+    ? visibleProcesses.filter((process) =>
         `${process.title} ${process.description} ${process.category}`.includes(
           query,
         ),
       )
-    : processes;
+    : visibleProcesses;
 
   return (
     <div className="home">
@@ -1050,12 +1012,9 @@ function Home({ onOpen }: { onOpen: (process: Process) => void }) {
                 }
               >
                 <div className="category-header">
-                  <div className="category-index">
-                    {toPersianNumber(category.id)}
-                  </div>
-
-                  <div>
+                  <div className="category-text">
                     <h3>{category.title}</h3>
+                    <p>{category.description}</p>
                   </div>
 
                   <span className="category-count">
@@ -1252,21 +1211,66 @@ function DetailPanel({
   );
 }
 
-const imageZoomButtonStyle: CSSProperties = {
-  width: 34,
-  height: 34,
-  border: "1px solid #DCE3ED",
-  borderRadius: 9,
-  background: "#fff",
-  color: "#172B4D",
-  fontSize: 19,
-  fontWeight: 700,
-  cursor: "pointer",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexShrink: 0,
-};
+// ساخت یک PDF تک‌صفحه‌ای شامل تصویر JPEG (بدون نیاز به کتابخانه)
+function buildPdf(
+  jpeg: Uint8Array,
+  imgWidth: number,
+  imgHeight: number,
+  pageWidth: number,
+  pageHeight: number,
+): Blob {
+  const encoder = new TextEncoder();
+  const parts: BlobPart[] = [];
+  const offsets: number[] = [];
+  let length = 0;
+
+  const push = (data: Uint8Array | string) => {
+    const bytes = typeof data === "string" ? encoder.encode(data) : data;
+    parts.push(bytes as BlobPart);
+    length += bytes.length;
+  };
+
+  const object = (id: number, write: () => void) => {
+    offsets[id] = length;
+    push(`${id} 0 obj\n`);
+    write();
+    push("\nendobj\n");
+  };
+
+  const content = `q ${pageWidth} 0 0 ${pageHeight} 0 0 cm /Im0 Do Q`;
+
+  push("%PDF-1.4\n");
+  object(1, () => push("<< /Type /Catalog /Pages 2 0 R >>"));
+  object(2, () => push("<< /Type /Pages /Kids [3 0 R] /Count 1 >>"));
+  object(3, () =>
+    push(
+      `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`,
+    ),
+  );
+  object(4, () => {
+    push(
+      `<< /Type /XObject /Subtype /Image /Width ${imgWidth} /Height ${imgHeight} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpeg.length} >>\nstream\n`,
+    );
+    push(jpeg);
+    push("\nendstream");
+  });
+  object(5, () =>
+    push(
+      `<< /Length ${content.length} >>\nstream\n${content}\nendstream`,
+    ),
+  );
+
+  const xrefOffset = length;
+  let xref = "xref\n0 6\n0000000000 65535 f \n";
+  for (let id = 1; id <= 5; id++) {
+    xref += `${String(offsets[id]).padStart(10, "0")} 00000 n \n`;
+  }
+  push(
+    `${xref}trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`,
+  );
+
+  return new Blob(parts, { type: "application/pdf" });
+}
 
 function WorkflowViewer({
   process,
@@ -1285,6 +1289,7 @@ function WorkflowViewer({
   const [imageZoom, setImageZoom] = useState(1);
   const [fitImageWidth, setFitImageWidth] = useState(0);
   const [imageLoadError, setImageLoadError] = useState(false);
+  const [pdfBusy, setPdfBusy] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 20 });
   const [stageSvgs, setStageSvgs] = useState<Record<string, string>>({});
 
@@ -1477,6 +1482,94 @@ function WorkflowViewer({
     }
   };
 
+  // دانلود مستقیم PDF به نام فرآیند (بدون پنجره‌ی چاپ)
+  const downloadPDF = async () => {
+    if (pdfBusy) return;
+
+    setPdfBusy(true);
+
+    let objectUrl = "";
+
+    try {
+      const response = await fetch(process.svgPath);
+      if (!response.ok) throw new Error("SVG fetch failed");
+
+      const svgBlob = await response.blob();
+      objectUrl = URL.createObjectURL(
+        svgBlob.type === "image/svg+xml"
+          ? svgBlob
+          : new Blob([svgBlob], { type: "image/svg+xml" }),
+      );
+
+      const img = new Image();
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error("SVG decode failed"));
+        img.src = objectUrl;
+      });
+
+      const width = img.naturalWidth || 1600;
+      const height = img.naturalHeight || 1000;
+
+      // کیفیت بالا، با سقف ایمن برای اندازه‌ی کانواس
+      const scale = Math.max(
+        0.1,
+        Math.min(2, 8000 / Math.max(width, height), Math.sqrt(80e6 / (width * height))),
+      );
+      const canvasWidth = Math.round(width * scale);
+      const canvasHeight = Math.round(height * scale);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("Canvas unavailable");
+
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+      ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight);
+
+      const jpegBlob = await new Promise<Blob>((resolve, reject) =>
+        canvas.toBlob(
+          (blob) => (blob ? resolve(blob) : reject(new Error("JPEG failed"))),
+          "image/jpeg",
+          0.92,
+        ),
+      );
+      const jpeg = new Uint8Array(await jpegBlob.arrayBuffer());
+
+      // اندازه‌ی صفحه = اندازه‌ی تصویر (حداکثر مجاز PDF حدود ۱۴۴۰۰)
+      const pageScale = Math.min(1, 14000 / Math.max(width, height));
+      const pdf = buildPdf(
+        jpeg,
+        canvasWidth,
+        canvasHeight,
+        Math.round(width * pageScale),
+        Math.round(height * pageScale),
+      );
+
+      const fileName =
+        process.title.trim().replace(/[\\/:*?"<>|]+/g, " ").trim() ||
+        "process";
+
+      const link = document.createElement("a");
+      const pdfUrl = URL.createObjectURL(pdf);
+      link.href = pdfUrl;
+      link.download = `${fileName}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(pdfUrl), 10000);
+    } catch (error) {
+      console.error("PDF export error:", error);
+      window.alert("ساخت فایل PDF با خطا مواجه شد. دوباره تلاش کنید.");
+    } finally {
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+      setPdfBusy(false);
+    }
+  };
+
   useEffect(() => {
     const onMove = (event: PointerEvent) => {
       if (!drag.current) return;
@@ -1534,289 +1627,6 @@ function WorkflowViewer({
 
   return (
     <div className="workflow-page workflow-page-clean">
-      <style>{`
-        .workflow-page-clean {
-          width: 100%;
-          max-width: 100%;
-          min-width: 0;
-          height: 100dvh;
-          min-height: 0;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          box-sizing: border-box;
-          background: #F4F6FA;
-        }
-
-        .workflow-page-clean *,
-        .workflow-page-clean *::before,
-        .workflow-page-clean *::after {
-          box-sizing: border-box;
-        }
-
-        .compact-workflow-head {
-          min-width: 0;
-          width: 100%;
-          flex: 0 0 auto;
-        }
-
-        .workflow-title-area {
-          min-width: 0;
-        }
-
-        .workspace-clean {
-          flex: 1 1 auto !important;
-          min-height: 0 !important;
-          height: auto !important;
-          display: flex !important;
-          flex-direction: column !important;
-          width: 100% !important;
-          max-width: 100% !important;
-          min-width: 0 !important;
-          overflow: hidden !important;
-        }
-
-        .registration-layout {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          width: 100%;
-          max-width: 100%;
-          min-width: 0;
-          height: 100%;
-          min-height: 0;
-          gap: 0;
-          overflow: hidden;
-          background: #fff;
-          isolation: isolate;
-        }
-
-        .journey-image-section {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          width: 100%;
-          height: 100%;
-          min-width: 0;
-          min-height: 0;
-          overflow: hidden;
-          background: #fff;
-          border: 0;
-          border-radius: 0;
-          padding: 0;
-          box-shadow: none;
-        }
-
-        .journey-image-toolbar {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-          flex-wrap: wrap;
-          padding: 9px 14px;
-          background: #fff;
-          border-bottom: 1px solid #EDF1F6;
-          flex: 0 0 auto;
-          z-index: 2;
-        }
-
-        .journey-svg-viewer {
-          position: relative;
-          display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-          direction: ltr;
-          width: 100%;
-          height: 100%;
-          flex: 1 1 auto;
-          min-height: 0;
-          overflow: auto;
-          background: #fff;
-          border: 0;
-          border-radius: 0;
-          padding: 0;
-          overscroll-behavior: contain;
-          scrollbar-width: thin;
-          scrollbar-color: #C7D0DD #F4F6FA;
-          -webkit-overflow-scrolling: touch;
-          cursor: grab;
-        }
-
-        .journey-svg-viewer::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-
-        .journey-svg-viewer::-webkit-scrollbar-thumb {
-          background: #C7D0DD;
-          border-radius: 20px;
-        }
-
-        .journey-svg-viewer::-webkit-scrollbar-track {
-          background: #F4F6FA;
-        }
-
-        .journey-svg-image {
-          display: block;
-          max-width: none;
-          margin: 0;
-          user-select: none;
-          -webkit-user-drag: none;
-          pointer-events: none;
-        }
-
-        .image-zoom-control:hover {
-          background: #EAF0F8 !important;
-        }
-
-        @media (max-width: 768px) {
-          .compact-workflow-head {
-            flex-wrap: wrap;
-            gap: 9px;
-            padding: 10px;
-          }
-
-          .compact-workflow-head .workflow-title-area {
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 9px;
-          }
-
-          .compact-workflow-head .workflow-title {
-            flex: 1 1 160px;
-            min-width: 0;
-          }
-
-          .compact-workflow-head .workflow-title h1 {
-            font-size: 15px;
-            line-height: 1.8;
-            overflow-wrap: anywhere;
-          }
-
-          .compact-workflow-head .workflow-title p {
-            font-size: 10px;
-            line-height: 1.8;
-          }
-
-          .compact-workflow-head .workflow-meta {
-            width: 100%;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-          }
-
-          .journey-image-toolbar {
-            padding: 8px;
-            gap: 8px;
-          }
-
-          .journey-image-toolbar > div:first-child {
-            flex: 1 1 100%;
-          }
-
-          .journey-image-toolbar > div:last-child {
-            width: 100%;
-            justify-content: center;
-          }
-
-          .journey-svg-viewer {
-            min-height: 0;
-          }
-        }
-
-        @media (max-width: 420px) {
-          .journey-image-toolbar strong {
-            font-size: 12px !important;
-          }
-        }
-
-        .workflow-page-clean:fullscreen {
-          width: 100%;
-          height: 100dvh;
-          min-height: 0;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          background: #F4F6FA;
-          padding: 12px;
-        }
-
-        .workflow-page-clean:fullscreen .workspace-clean {
-          flex: 1 1 auto !important;
-          min-height: 0 !important;
-        }
-
-        .workflow-page-clean:fullscreen .registration-layout {
-          height: 100%;
-          min-height: 0;
-        }
-
-        .registration-layout {
-          background: #F4F6FA !important;
-          padding: 6px !important;
-          box-sizing: border-box !important;
-        }
-
-        .journey-image-section {
-          display: grid !important;
-          grid-template-columns: minmax(0, 1fr) !important;
-          grid-template-rows: auto minmax(0, 1fr) !important;
-          gap: 6px !important;
-          min-height: 0 !important;
-          background: transparent !important;
-          overflow: hidden !important;
-        }
-
-        .journey-image-toolbar {
-          grid-column: 1 / -1 !important;
-          border: 1px solid #E0E6EF !important;
-          border-radius: 14px !important;
-          padding: 6px 12px !important;
-          background: #fff !important;
-          box-shadow: 0 2px 8px rgba(23, 43, 77, .035) !important;
-        }
-
-        .journey-image-toolbar strong {
-          font-size: 14px !important;
-          line-height: 1.8 !important;
-        }
-
-        .journey-image-toolbar span {
-          font-size: 11px !important;
-          line-height: 1.8 !important;
-        }
-
-        .journey-svg-viewer {
-          grid-column: 1 !important;
-          grid-row: 2 !important;
-          width: 100% !important;
-          height: 100% !important;
-          min-width: 0 !important;
-          min-height: 0 !important;
-          border: 1px solid #E0E6EF !important;
-          border-radius: 14px !important;
-          background: #F8F9FC !important;
-          box-shadow: 0 2px 10px rgba(23, 43, 77, .04) !important;
-        }
-
-        @media (max-width: 520px) {
-          .registration-layout {
-            padding: 4px !important;
-          }
-
-          .journey-image-toolbar {
-            padding: 10px !important;
-            border-radius: 11px !important;
-          }
-        }
-
-        .workflow-page-clean:fullscreen .registration-layout {
-          padding: 12px !important;
-        }
-      `}</style>
-
       <div className="workflow-head compact-workflow-head">
         <div className="workflow-title-area">
           <button
@@ -1825,26 +1635,10 @@ function WorkflowViewer({
             aria-label="بازگشت به فرآیندها"
             title="بازگشت به فهرست فرآیندها"
             type="button"
-            style={{
-              minWidth: "auto",
-              height: 30,
-              padding: "0 5px",
-              border: "none",
-              borderRadius: 0,
-              background: "transparent",
-              color: "#172B4D",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 5,
-              cursor: "pointer",
-              fontSize: 12,
-              fontWeight: 600,
-              boxShadow: "none",
-              flexShrink: 0,
-            }}
           >
-            <span style={{ fontSize: 17, lineHeight: 1 }}>→</span>
+            <span className="back-arrow" aria-hidden="true">
+              →
+            </span>
             <span>بازگشت</span>
           </button>
 
@@ -1868,82 +1662,40 @@ function WorkflowViewer({
             <span aria-hidden="true">⛶</span>
             تمام‌صفحه
           </button>
+
+          <button
+            className="fullscreen-button pdf-button"
+            onClick={downloadPDF}
+            disabled={imageLoadError || pdfBusy}
+            type="button"
+            title="دانلود نمودار این فرآیند به‌صورت PDF"
+          >
+            <span aria-hidden="true">↓</span>
+            {pdfBusy ? "در حال آماده‌سازی…" : "دانلود PDF"}
+          </button>
         </div>
       </div>
 
-      <div
-        className="workspace workspace-clean"
-        ref={workspaceRef}
-        style={
-          isImageProcess
-            ? {
-                padding: 0,
-                margin: 0,
-                border: "none",
-                borderRadius: 0,
-                background: "transparent",
-                boxShadow: "none",
-                width: "100%",
-                height: "100%",
-                minHeight: 0,
-                flex: "1 1 auto",
-                display: "flex",
-                flexDirection: "column",
-                overflow: "hidden",
-                maxWidth: "100%",
-              }
-            : undefined
-        }
-      >
+      <div className="workspace workspace-clean" ref={workspaceRef}>
         {isImageProcess ? (
           <div className="registration-layout">
             <section className="journey-image-section">
               <div className="journey-image-toolbar">
-                <div style={{ minWidth: 0 }}>
-                  <strong
-                    style={{
-                      color: "#172B4D",
-                      fontSize: 13,
-                      display: "block",
-                    }}
-                  >
-                    {`نمای تصویری ${process.title}`}
-                  </strong>
-
+                <div className="journey-image-title">
+                  <strong>{`نمای تصویری ${process.title}`}</strong>
                 </div>
 
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    direction: "ltr",
-                    flexWrap: "wrap",
-                    background: "#F4F6FA",
-                    border: "1px solid #E0E6EF",
-                    padding: 5,
-                    borderRadius: 11,
-                  }}
-                >
+                <div className="zoom-group">
                   <button
                     type="button"
                     aria-label="بزرگ‌نمایی تصویر"
                     className="image-zoom-control"
                     onClick={() => zoomImage(0.2)}
-                    style={imageZoomButtonStyle}
                   >
                     +
                   </button>
 
-                  <span
-                    style={{
-                      minWidth: 48,
-                      textAlign: "center",
-                      color: "#39475B",
-                      fontSize: 11,
-                      fontWeight: 700,
-                    }}
-                  >
+                  <span className="zoom-value">
                     {toPersianNumber(Math.round(imageZoom * 100))}٪
                   </span>
 
@@ -1952,21 +1704,14 @@ function WorkflowViewer({
                     aria-label="کوچک‌نمایی تصویر"
                     className="image-zoom-control"
                     onClick={() => zoomImage(-0.2)}
-                    style={imageZoomButtonStyle}
                   >
                     −
                   </button>
 
                   <button
                     type="button"
-                    className="image-zoom-control"
+                    className="image-zoom-control zoom-reset"
                     onClick={resetImageZoom}
-                    style={{
-                      ...imageZoomButtonStyle,
-                      width: "auto",
-                      padding: "0 11px",
-                      fontSize: 10,
-                    }}
                   >
                     بازنشانی
                   </button>
@@ -1991,8 +1736,6 @@ function WorkflowViewer({
                 style={{
                   cursor: imageZoom > 1 ? "grab" : "default",
                   touchAction: imageZoom > 1 ? "none" : "pan-x pan-y",
-                  alignItems: "flex-start",
-                  justifyContent: "flex-start",
                 }}
               >
                 {!imageLoadError ? (
@@ -2008,56 +1751,18 @@ function WorkflowViewer({
                       width: fitImageWidth
                         ? `${fitImageWidth * imageZoom}px`
                         : "100%",
-                      height: "auto",
-                      maxWidth: "none",
-                      flexShrink: 0,
-                      objectFit: "contain",
-                      userSelect: "none",
-                      pointerEvents: "none",
                       margin: imageZoom > 1 ? 0 : "auto",
                     }}
                   />
                 ) : (
-                  <div
-                    style={{
-                      width: "min(760px, 90%)",
-                      minHeight: 260,
-                      margin: "auto",
-                      padding: 32,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: 12,
-                      textAlign: "center",
-                      border: "1px dashed #B8C5D6",
-                      borderRadius: 16,
-                      background: "#F8FAFC",
-                      color: "#52627A",
-                    }}
-                  >
-                    <span style={{ fontSize: 36, color: "#8293AA" }}>▧</span>
+                  <div className="image-missing">
+                    <span className="image-missing-icon">▧</span>
 
-                    <strong style={{ color: "#172B4D", fontSize: 15 }}>
-                      جایگاه تصویر فرآیند آماده است
-                    </strong>
+                    <strong>جایگاه تصویر فرآیند آماده است</strong>
 
-                    <span style={{ fontSize: 12 }}>
-                      فایل SVG این فرآیند را در مسیر زیر قرار دهید:
-                    </span>
+                    <span>فایل SVG این فرآیند را در مسیر زیر قرار دهید:</span>
 
-                    <code
-                      dir="ltr"
-                      style={{
-                        padding: "8px 12px",
-                        borderRadius: 8,
-                        background: "#E9EEF5",
-                        color: "#172B4D",
-                        fontSize: 12,
-                      }}
-                    >
-                      {process.svgPath}
-                    </code>
+                    <code dir="ltr">{process.svgPath}</code>
                   </div>
                 )}
               </div>
@@ -2275,26 +1980,11 @@ function WorkflowViewer({
               </div>
             </div>
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                padding: "8px 12px",
-              }}
-            >
+            <div className="canvas-reset-bar">
               <button
                 type="button"
+                className="canvas-reset-button"
                 onClick={resetPosition}
-                style={{
-                  border: "1px solid #DCE3ED",
-                  borderRadius: 9,
-                  padding: "7px 12px",
-                  background: "#fff",
-                  color: "#39475B",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
               >
                 ↻ بازنشانی جایگاه نمودار
               </button>
