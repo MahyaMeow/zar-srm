@@ -1,0 +1,10 @@
+{
+  "description": "Interactive SRM process visualization platform that enables procurement teams to explore and understand supplier management workflows through beautiful, interactive flowcharts and detailed process documentation.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
